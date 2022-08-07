@@ -9,7 +9,7 @@ import { SpecialistsActions } from '../../actions'
 import { Nav, InputBox } from './styled';
 import {selectAvailableFilters} from "../../selectors/specialists.selectors";
 import { FilterByField } from "../../actions/specialists.actions";
-import {availableFiltersNames} from "../../reducers/specialists.reducer";
+import {AvailableFiltersNames} from "../../reducers/specialists.reducer";
 
 export const SpecialistNav = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const SpecialistNav = () => {
     return (
         <Nav>
             {availableFilters && Object.entries(availableFilters).map(([key, value]) => (
-                <Select key={key} name={key} options={value} onChange={(value) => filterHandler({ name: key as availableFiltersNames, value })} />
+                <Select key={key} name={key} options={value} onChange={(value) => filterHandler({ name: key as AvailableFiltersNames, value })} />
             ))}
             <InputBox>
                 <SearchInput placeholder="Поиск по имени" onChange={searchHandler} />

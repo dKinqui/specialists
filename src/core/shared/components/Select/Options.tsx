@@ -14,7 +14,7 @@ interface OptionsProps extends Pick<SelectProps, 'options'> {
 
 export const Options: React.FC<OptionsProps> = ({ options, referenceElemRect, onChange, selected, onClose }) => {
 
-    const calcCoordinated = useCallback(() => {
+    const calcCoordinates = useCallback(() => {
         const { x, bottom } = referenceElemRect;
         return { x, y: bottom + 10 }
     }, [referenceElemRect])
@@ -22,7 +22,7 @@ export const Options: React.FC<OptionsProps> = ({ options, referenceElemRect, on
     return (
         <>
             <Overlay onClose={onClose} />
-            <Portal calcCoordinates={calcCoordinated}>
+            <Portal calcCoordinates={calcCoordinates}>
                 <ContentBox>
                     <StyledOptions onClick={onChange}>
                         {options.map((option) => (

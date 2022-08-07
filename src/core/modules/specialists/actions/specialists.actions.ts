@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
-import {availableFiltersNames} from "../reducers/specialists.reducer";
+import {AvailableFiltersNames} from "../reducers/specialists.reducer";
 
 export interface FilterByField {
-    name: availableFiltersNames,
+    name: AvailableFiltersNames,
     value: string
 }
 

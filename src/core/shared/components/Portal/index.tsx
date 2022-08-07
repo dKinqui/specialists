@@ -8,12 +8,12 @@ export interface Coordinates {
     y: number,
 }
 
-type calcCoordinate = () => Coordinates
+type CalcCoordinate = () => Coordinates
 
 interface PortalProps {
     noOverlay?: boolean;
     children: JSX.Element | JSX.Element[];
-    calcCoordinates: calcCoordinate;
+    calcCoordinates: CalcCoordinate;
     fixedContent?: boolean;
 }
 

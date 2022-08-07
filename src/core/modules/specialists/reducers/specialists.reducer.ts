@@ -5,14 +5,14 @@ import AllSpecialists from 'core/data/all';
 import { SpecialistsActions } from '../actions';
 import { Specialist } from "../models/specialists.model";
 
-export type availableFiltersNames = keyof Pick<Specialist, 'insurances' | 'speciality'>
-const availableFiltersNamesAsArray: availableFiltersNames[] = ['insurances', 'speciality']
+export type AvailableFiltersNames = keyof Pick<Specialist, 'insurances' | 'speciality'>
+const AvailableFiltersNamesAsArray: AvailableFiltersNames[] = ['insurances', 'speciality']
 
 export interface InitialState {
     data: Specialist[];
     filteredData: Specialist[];
-    availableFilters: Record<availableFiltersNames, string[]>,
-    activeFilters: Record<availableFiltersNames, string>
+    availableFilters: Record<AvailableFiltersNames, string[]>,
+    activeFilters: Record<AvailableFiltersNames, string>
 }
 
 const initialState: InitialState = {
@@ -31,7 +31,7 @@ export const specialistsReducer = createReducer(initialState, (builder) => build
         data: AllSpecialists as Specialist[],
         filteredData: AllSpecialists as Specialist[],
         availableFilters: AllSpecialists.reduce<InitialState['availableFilters']>((filters, cur) => {
-            availableFiltersNamesAsArray.forEach((name) => {
+            AvailableFiltersNamesAsArray.forEach((name) => {
                 const targetFilter = filters[name]
                 const curFilter = cur[name]
                 if (curFilter && !targetFilter.includes(curFilter)) targetFilter.push(curFilter)
@@ -61,7 +61,7 @@ export const specialistsReducer = createReducer(initialState, (builder) => build
             filteredData: dataToFiltering.filter((elem) => Object.entries(newActiveFilters)
                 .reduce((isCorrect, [name, value]) => {
                     if (!value || !isCorrect) return isCorrect
-                    return elem[name as availableFiltersNames] === value
+                    return elem[name as AvailableFiltersNames] === value
                 }, true)),
             activeFilters: newActiveFilters
         }
